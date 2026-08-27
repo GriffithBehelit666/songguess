@@ -1249,3 +1249,180 @@ select:focus {
 }
 ```
 
+
+```css
+/* ========================================
+   CLEANER COLOR BALANCE REFINEMENT
+   Green is now an accent, not the main color
+   ======================================== */
+
+/* Soften the background glow */
+body {
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(29, 185, 84, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(99, 102, 241, 0.10),
+      transparent 32%
+    ),
+    #090a0f;
+}
+
+
+/* Make unselected mode cards more neutral */
+.mode-option {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  border-color: rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+
+/* Cleaner hover — subtle white border instead of green */
+.mode-option:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.03)
+    );
+
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.22);
+}
+
+
+/* Selected mode gets a subtle green accent */
+.mode-option.active {
+  border-color: rgba(29, 185, 84, 0.42);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(29, 185, 84, 0.09),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(29, 185, 84, 0.05);
+}
+
+
+/* Make mode icons neutral by default */
+.mode-option .mode-icon {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+
+/* Only lightly highlight the selected icon */
+.mode-option.active .mode-icon {
+  background: rgba(29, 185, 84, 0.12);
+  border-color: rgba(29, 185, 84, 0.18);
+}
+
+
+/* Reduce green glow on primary buttons */
+.primary {
+  box-shadow:
+    0 8px 20px rgba(29, 185, 84, 0.12);
+}
+
+.primary:hover:not(:disabled) {
+  box-shadow:
+    0 14px 28px rgba(29, 185, 84, 0.18);
+}
+
+
+/* Make the Start Game button stand out through depth,
+   not an oversized glow */
+.start-button {
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.start-button:hover:not(:disabled) {
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.28),
+    0 0 18px rgba(29, 185, 84, 0.10);
+}
+
+
+/* Cleaner card appearance */
+.card {
+  background: rgba(18, 20, 28, 0.88);
+
+  border-color: rgba(255, 255, 255, 0.075);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+
+/* Keep green mainly for the timer */
+.timer-fill {
+  box-shadow:
+    0 0 14px rgba(29, 185, 84, 0.35);
+}
+
+
+/* Subtle selected-state feedback */
+.mode-option.active::after {
+  content: "SELECTED";
+
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  background: rgba(29, 185, 84, 0.14);
+
+  border: 1px solid rgba(29, 185, 84, 0.20);
+}
+
+
+/* Cleaner spacing around the Start Game section */
+.start-button {
+  margin-top: 26px;
+}
+
+.small-note {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+
+/* Mobile: remove the selected label to keep cards uncluttered */
+@media (max-width: 700px) {
+  .mode-option.active::after {
+    display: none;
+  }
+}
+```
+
+
