@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>SongGuess 🎵</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+</head>
+
+<body>
+
+<main class="app">
+
+  <section
+    id="homeScreen"
+    class="screen active"
+  >
+
+    <div class="hero">
+      <div class="logo">🎵</div>
+
+      <h1>SongGuess</h1>
+
+      <p>
+        How well do you know your music?
+      </p>
+    </div>
+
+
+    <div class="card">
+
+      <h2>Choose Your Challenge</h2>
+
+
+      <div class="mode-selector">
+
+        <button
+          class="mode-option active"
+          data-source-mode="artist"
+        >
+          <span class="mode-icon">🎤</span>
+
+          <strong>Artist Mode</strong>
+
+          <small>
+            Guess songs from one artist's catalog
+          </small>
+        </button>
+
+
+        <button
+          class="mode-option"
+          data-source-mode="genre"
+        >
+          <span class="mode-icon">🎸</span>
+
+          <strong>Genre Mode</strong>
+
+          <small>
+            Guess random songs from a genre
+          </small>
+        </button>
+
+      </div>
+
+
+      <div id="artistModePanel">
+
+        <label for="artistSearch">
+          Search for an artist
+        </label>
+
+
+        <div class="search-row">
+
+          <input
+            id="artistSearch"
+            type="text"
+            placeholder="Drake, Eminem, Taylor Swift..."
+            autocomplete="off"
+          >
+
+
+          <button
+            id="searchButton"
+            class="primary"
+          >
+            Search
+          </button>
+
+        </div>
+
+
+        <div
+          id="searchStatus"
+          class="status"
+        ></div>
+
+
+        <div
+          id="artistResults"
+          class="artist-results"
+        ></div>
+
+
+        <div
+          id="selectedArtist"
+          class="selected-artist hidden"
+        >
+
+          <img
+            id="selectedArtistImage"
+            alt=""
+          >
+
+
+          <div>
+
+            <strong
+              id="selectedArtistName"
+            ></strong>
+
+            <small
+              id="selectedArtistGenres"
+            ></small>
+
+          </div>
+
+
+          <button
+            id="clearArtistButton"
+            class="text-button"
+          >
+            Change
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="genreModePanel"
+        class="hidden"
+      >
+
+        <label for="genreSelect">
+          Choose a genre
+        </label>
+
+
+        <select id="genreSelect">
+
+          <option value="hip-hop">
+            Hip-Hop
+          </option>
+
+          <option value="rap">
+            Rap
+          </option>
+
+          <option value="pop">
+            Pop
+          </option>
+
+          <option value="rock">
+            Rock
+          </option>
+
+          <option value="country">
+            Country
+          </option>
+
+          <option value="r-n-b">
+            R&B
+          </option>
+
+          <option value="edm">
+            EDM
+          </option>
+
+          <option value="dance">
+            Dance
+          </option>
+
+          <option value="latin">
+            Latin
+          </option>
+
+          <option value="metal">
+            Metal
+          </option>
+
+          <option value="alternative">
+            Alternative
+          </option>
+
+          <option value="indie">
+            Indie
+          </option>
+
+          <option value="jazz">
+            Jazz
+          </option>
+
+          <option value="blues">
+            Blues
+          </option>
+
+          <option value="reggae">
+            Reggae
+          </option>
+
+        </select>
+
+
+        <p class="genre-note">
+          Songs are selected from a Spotify
+          search pool for your chosen genre.
+        </p>
+
+      </div>
+
+
+      <div class="settings">
+
+        <div>
+
+          <label for="gameMode">
+            Game mode
+          </label>
+
+          <select id="gameMode">
+
+            <option value="progressive">
+              Progressive — gets harder
+            </option>
+
+            <option value="random">
+              Random — mixed difficulty
+            </option>
+
+            <option value="chaos">
+              Chaos — extreme difficulty
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label for="roundCount">
+            Number of rounds
+          </label>
+
+          <select id="roundCount">
+
+            <option value="5">
+              5 rounds
+            </option>
+
+            <option
+              value="10"
+              selected
+            >
+              10 rounds
+            </option>
+
+            <option value="15">
+              15 rounds
+            </option>
+
+            <option value="20">
+              20 rounds
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="startButton"
+        class="primary start-button"
+        disabled
+      >
+        Start Game 🎮
+      </button>
+
+
+      <p class="small-note">
+        Music is played through Spotify's
+        official embedded player.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section
+    id="gameScreen"
+    class="screen"
+  >
+
+    <div class="game-header">
+
+      <div class="stat">
+        <span>Round</span>
+
+        <strong id="roundNumber">
+          1 / 10
+        </strong>
+      </div>
+
+
+      <div class="stat">
+        <span>Score</span>
+
+        <strong id="score">
+          0
+        </strong>
+      </div>
+
+
+      <div class="stat">
+        <span>🔥 Streak</span>
+
+        <strong id="streak">
+          0
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="card game-card">
+
+      <div class="game-top-row">
+
+        <div
+          id="difficultyBadge"
+          class="difficulty easy"
+        >
+          EASY
+        </div>
+
+
+        <div
+          id="listeningStage"
+          class="listening-stage"
+        >
+          Stage 1 of 4
+        </div>
+
+      </div>
+
+
+      <h2>
+        What song is this?
+      </h2>
+
+
+      <p
+        id="gameSourceLabel"
+        class="muted"
+      ></p>
+
+
+      <div class="listening-window">
+
+        <div class="window-header">
+
+          <div>
+
+            <span class="window-label">
+              Listening window
+            </span>
+
+            <strong id="stageTime">
+              5 seconds
+            </strong>
+
+          </div>
+
+
+          <strong id="stageCountdown">
+            5s
+          </strong>
+
+        </div>
+
+
+        <div class="timer-track">
+
+          <div
+            id="timerFill"
+            class="timer-fill"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <p
+        id="stageDescription"
+        class="stage-description"
+      >
+        You have a short time to identify the song.
+      </p>
+
+
+      <div
+        id="spotifyPlayer"
+        class="player-container"
+      ></div>
+
+
+      <div class="guess-row">
+
+        <input
+          id="guessInput"
+          type="text"
+          placeholder="Type the song title..."
+          autocomplete="off"
+        >
+
+
+        <button
+          id="guessButton"
+          class="primary"
+        >
+          Guess
+        </button>
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          id="revealButton"
+          class="secondary reveal-button"
+        >
+          🔓 Reveal More
+        </button>
+
+
+        <button
+          id="hintButton"
+          class="secondary"
+        >
+          💡 Hint
+        </button>
+
+
+        <button
+          id="skipButton"
+          class="secondary"
+        >
+          ⏭ Skip
+        </button>
+
+
+        <button
+          id="quitButton"
+          class="danger"
+        >
+          End Game
+        </button>
+
+      </div>
+
+
+      <div
+        id="messageBox"
+        class="message"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+  <section
+    id="resultsScreen"
+    class="screen"
+  >
+
+    <div class="card results-card">
+
+      <div class="trophy">
+        🏆
+      </div>
+
+      <h1>Game Over!</h1>
+
+
+      <div
+        id="finalScore"
+        class="final-score"
+      >
+        0
+      </div>
+
+
+      <p class="muted">
+        Final Score
+      </p>
+
+
+      <div class="results-stats">
+
+        <div class="stat">
+          <span>Correct</span>
+
+          <strong id="correctCount">
+            0
+          </strong>
+        </div>
+
+
+        <div class="stat">
+          <span>Best Streak</span>
+
+          <strong id="bestStreak">
+            0
+          </strong>
+        </div>
+
+      </div>
+
+
+      <h2>Round Results</h2>
+
+
+      <div
+        id="roundResults"
+        class="round-results"
+      ></div>
+
+
+      <button
+        id="playAgainButton"
+        class="primary start-button"
+      >
+        Play Again 🎵
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+  window.onSpotifyWebPlaybackSDKReady = () => {
+    console.log("Spotify SDK loaded");
+  };
+</script>
+
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
