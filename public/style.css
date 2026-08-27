@@ -699,3 +699,322 @@ select:focus {
     flex-direction: column;
   }
 }
+
+
+
+```css
+/* ================================
+   MODERN SONGGUESS VISUAL UPGRADE
+   ================================ */
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(29, 185, 84, 0.12), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(110, 72, 255, 0.14), transparent 40%),
+    #0b0b0f;
+}
+
+.card,
+.panel,
+.game-panel,
+.section-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+button {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+input,
+select {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  box-shadow: 0 0 0 4px rgba(29, 185, 84, 0.14);
+}
+
+#timerFill {
+  transition: width 0.75s linear;
+  box-shadow: 0 0 16px rgba(29, 185, 84, 0.45);
+}
+
+.score-card,
+.stat-card {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.score-card:hover,
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(29, 185, 84, 0.35);
+}
+```
+
+
+
+
+```css
+/* ========================================
+   SONGGUESS — MODERN UI UPGRADE
+   ======================================== */
+
+/* App background */
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(29, 185, 84, 0.16), transparent 28%),
+    radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.14), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(236, 72, 153, 0.08), transparent 35%),
+    #08090d;
+}
+
+/* Main content area */
+.app {
+  position: relative;
+}
+
+/* Modern glass cards */
+.card {
+  background: rgba(20, 22, 30, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+}
+
+/* Hero area */
+.hero {
+  position: relative;
+}
+
+.logo {
+  box-shadow:
+    0 12px 35px rgba(29, 185, 84, 0.25);
+  transform: rotate(-3deg);
+  transition: transform 0.25s ease;
+}
+
+.logo:hover {
+  transform: rotate(0deg) scale(1.06);
+}
+
+/* Challenge mode cards */
+.mode-option {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.mode-option:hover {
+  transform: translateY(-4px);
+  border-color: rgba(29, 185, 84, 0.45);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.mode-option.active {
+  border-color: rgba(29, 185, 84, 0.65);
+  box-shadow:
+    0 0 0 1px rgba(29, 185, 84, 0.18),
+    0 12px 30px rgba(29, 185, 84, 0.12);
+}
+
+/* Settings and inputs */
+input,
+select {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+input:hover,
+select:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+input:focus,
+select:focus {
+  border-color: rgba(29, 185, 84, 0.8);
+  box-shadow: 0 0 0 4px rgba(29, 185, 84, 0.13);
+}
+
+/* Primary buttons */
+.primary {
+  box-shadow:
+    0 10px 24px rgba(29, 185, 84, 0.18);
+}
+
+.primary:hover:not(:disabled) {
+  box-shadow:
+    0 15px 32px rgba(29, 185, 84, 0.28);
+}
+
+/* Secondary action buttons */
+.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* Score / round / streak */
+.game-header {
+  gap: 14px;
+}
+
+.game-header .stat,
+.results-stats .stat {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.game-header .stat:hover,
+.results-stats .stat:hover {
+  transform: translateY(-3px);
+  border-color: rgba(29, 185, 84, 0.35);
+}
+
+/* Difficulty badge */
+.difficulty {
+  letter-spacing: 0.08em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Listening window — main focal point */
+.listening-window {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(29, 185, 84, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.timer-track {
+  overflow: hidden;
+}
+
+.timer-fill {
+  box-shadow:
+    0 0 20px rgba(29, 185, 84, 0.65);
+  transition: width 0.75s linear;
+}
+
+/* Player area */
+.player-container {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Guess area */
+.guess-row input {
+  min-height: 52px;
+}
+
+.guess-row .primary {
+  min-height: 52px;
+}
+
+/* Action buttons */
+.actions {
+  gap: 10px;
+}
+
+.actions button {
+  border-radius: 14px;
+}
+
+/* Reveal button gets special emphasis */
+.reveal-button {
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+/* Message box */
+.message {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* Results screen */
+.results-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.trophy {
+  filter: drop-shadow(0 10px 18px rgba(245, 158, 11, 0.3));
+}
+
+.final-score {
+  text-shadow: 0 0 30px rgba(29, 185, 84, 0.22);
+}
+
+/* Smooth entrance */
+.screen.active .card,
+.screen.active .hero,
+.screen.active .game-header {
+  animation: songguessFadeUp 0.45s ease both;
+}
+
+@keyframes songguessFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile polish */
+@media (max-width: 700px) {
+  .game-header {
+    gap: 8px;
+  }
+
+  .game-header .stat {
+    border-radius: 14px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .actions button {
+    min-height: 46px;
+  }
+}
+```
