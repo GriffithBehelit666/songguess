@@ -1426,3 +1426,26 @@ body {
 ```
 
 
+/* Fix oversized green logo box */
+.logo {
+  width: 72px;
+  height: 72px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(29, 185, 84, 0.10);
+  border: 1px solid rgba(29, 185, 84, 0.18);
+
+  box-shadow:
+    0 10px 25px rgba(29, 185, 84, 0.12);
+
+  font-size: 2rem;
+}
+
+
