@@ -1060,7 +1060,7 @@ app.get(
 
 app.listen(
   PORT,
-  "127.0.0.1",
+  "0.0.0.0",
   () => {
     console.log(
       `SongGuess is running at http://127.0.0.1:${PORT}`
